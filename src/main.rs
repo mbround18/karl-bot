@@ -12,7 +12,6 @@ use serenity::json::{JsonMap, Value};
 use serenity::model::channel::Message;
 use serenity::prelude::*;
 
-
 #[group]
 #[commands(eet)]
 struct General;
@@ -58,7 +57,10 @@ async fn eet(_ctx: &Context, msg: &Message) -> CommandResult {
 
     http.edit_member(
         msg.guild_id.expect("Guild ID is not present!").0,
-        env::var("USER_ID").expect("Karls user ID needs to be present") as u64,
+        env::var("USER_ID")
+            .expect("Karls user ID needs to be present")
+            .parse::<u64>()
+            .expect("Failed to convert environment variable USER_ID to u64"),
         &payload,
         Some("Its Karl..."),
     )

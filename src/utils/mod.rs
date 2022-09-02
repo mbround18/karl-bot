@@ -19,5 +19,6 @@ pub fn get_name() -> String {
             .next()
             .expect("New project name failed to generate!")
             .as_str(),
-    ).replace('-', " ")
+    )
+    .replace('-', " ")
 }
