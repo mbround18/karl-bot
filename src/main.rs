@@ -58,7 +58,7 @@ async fn eet(_ctx: &Context, msg: &Message) -> CommandResult {
 
     http.edit_member(
         msg.guild_id.expect("Guild ID is not present!").0,
-        265150125532381197,
+        env::var("USER_ID").expect("Karls user ID needs to be present") as u64,
         &payload,
         Some("Its Karl..."),
     )
