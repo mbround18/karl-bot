@@ -2,7 +2,7 @@
 
 A simple bot to troll my friend Karl
 
-## Installation 
+## Installation
 
 ```shell
 docker run \

@@ -1,14 +1,14 @@
+mod commands;
 mod utils;
 
 use log::{error, info};
 use std::env;
 
-use crate::utils::{get_name, setup_logger};
+use crate::commands::set_name::set_name;
+use crate::utils::setup_logger;
 use serenity::async_trait;
 use serenity::framework::standard::macros::{command, group};
 use serenity::framework::standard::{CommandResult, StandardFramework};
-use serenity::http::HttpBuilder;
-use serenity::json::{JsonMap, Value};
 use serenity::model::channel::Message;
 use serenity::prelude::*;
 
@@ -49,23 +49,21 @@ async fn main() {
 }
 
 #[command]
-async fn eet(_ctx: &Context, msg: &Message) -> CommandResult {
-    let token = env::var("DISCORD_TOKEN").expect("token");
-    let http = HttpBuilder::new(token).build();
-    let mut payload = JsonMap::new();
-    payload.insert("nick".to_string(), Value::from(get_name()));
+async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
+    let user_id = env::var("USER_ID")
+        .expect("Karls user ID needs to be present")
+        .parse::<u64>()
+        .expect("Failed to convert environment variable USER_ID to u64");
 
-    http.edit_member(
-        msg.guild_id.expect("Guild ID is not present!").0,
-        env::var("USER_ID")
-            .expect("Karls user ID needs to be present")
-            .parse::<u64>()
-            .expect("Failed to convert environment variable USER_ID to u64"),
-        &payload,
-        Some("Its Karl..."),
-    )
-    .await
-    .expect("Failed to set nickname");
+    set_name(ctx, msg, user_id).await
+}
 
-    Ok(())
+#[command]
+async fn all(ctx: &Context, msg: &Message) -> CommandResult {
+    let super_user_id = env::var("SUPER_USER_ID")
+        .expect("Super Karls user ID needs to be present")
+        .parse::<u64>()
+        .expect("Failed to convert environment variable USER_ID to u64");
+
+    set_name(ctx, msg, super_user_id).await
 }
