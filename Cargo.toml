@@ -11,3 +11,4 @@ tokio = { version = "1", features = ["rt-multi-thread"] }
 env_logger = "0"
 log = "0"
 names = { version = "0", default-features = false }
+titlecase = "2"

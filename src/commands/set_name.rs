@@ -5,6 +5,7 @@ use serenity::json::{JsonMap, Value};
 use serenity::model::channel::Message;
 use serenity::prelude::*;
 use std::env;
+use titlecase::titlecase;
 
 pub async fn set_name(
     _ctx: &Context,
@@ -18,10 +19,13 @@ pub async fn set_name(
 
     payload.insert(
         "nick".to_string(),
-        Value::from(match prefix {
-            Some(pre) => format!("{} {}", pre, get_name()),
-            None => get_name(),
-        }),
+        Value::from(titlecase(
+            match prefix {
+                Some(pre) => format!("{} {}", pre, get_name()),
+                None => get_name(),
+            }
+            .as_str(),
+        )),
     );
 
     http.edit_member(
