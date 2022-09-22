@@ -13,7 +13,7 @@ use serenity::model::channel::Message;
 use serenity::prelude::*;
 
 #[group]
-#[commands(eet)]
+#[commands(eet, all)]
 struct General;
 
 struct Handler;
@@ -54,7 +54,7 @@ async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
         .expect("Karls user ID needs to be present")
         .parse::<u64>()
         .expect("Failed to convert environment variable USER_ID to u64");
-
+    info!("Yeet called! Changing nick of {}", user_id);
     set_name(ctx, msg, None, user_id).await
 }
 
@@ -63,7 +63,7 @@ async fn all(ctx: &Context, msg: &Message) -> CommandResult {
     let super_user_id = env::var("SUPER_USER_ID")
         .expect("Super Karls user ID needs to be present")
         .parse::<u64>()
-        .expect("Failed to convert environment variable USER_ID to u64");
-
+        .expect("Failed to convert environment variable SUPER_USER_ID to u64");
+    info!("Yall called! Changing nick of {}", super_user_id);
     set_name(ctx, msg, Some(String::from("Super")), super_user_id).await
 }

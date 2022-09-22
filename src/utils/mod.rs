@@ -5,7 +5,7 @@ pub fn setup_logger() {
     let mode = if cfg!(debug_assertions) {
         "DEBUG"
     } else {
-        "ERROR"
+        "INFO"
     }
     .to_string();
     env::set_var("KARL_LOG", env::var("KARL_LOG").unwrap_or(mode));
