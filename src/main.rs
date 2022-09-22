@@ -55,7 +55,7 @@ async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
         .parse::<u64>()
         .expect("Failed to convert environment variable USER_ID to u64");
 
-    set_name(ctx, msg, user_id).await
+    set_name(ctx, msg, None, user_id).await
 }
 
 #[command]
@@ -65,5 +65,5 @@ async fn all(ctx: &Context, msg: &Message) -> CommandResult {
         .parse::<u64>()
         .expect("Failed to convert environment variable USER_ID to u64");
 
-    set_name(ctx, msg, super_user_id).await
+    set_name(ctx, msg, Some(String::from("Super")), super_user_id).await
 }
