@@ -10,7 +10,7 @@ COPY . .
 # This is a dummy build to get the dependencies cached.
 RUN cargo build --target x86_64-unknown-linux-gnu --release
 
-FROM debian:bullseye
+FROM debian:bookworm
 
 WORKDIR /bot
 
