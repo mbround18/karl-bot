@@ -9,7 +9,7 @@ use crate::utils::setup_logger;
 use serenity::async_trait;
 use serenity::framework::standard::macros::{command, group};
 use serenity::framework::standard::{CommandResult, StandardFramework};
-use serenity::model::channel::Message;
+use serenity::model::prelude::Message;
 use serenity::prelude::*;
 
 #[group]
@@ -51,7 +51,7 @@ async fn main() {
 #[command]
 async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
     let user_id = env::var("USER_ID")
-        .expect("Karls user ID needs to be present")
+        .expect("Karl's user ID needs to be present")
         .parse::<u64>()
         .expect("Failed to convert environment variable USER_ID to u64");
     info!("Yeet called! Changing nick of {}", user_id);
@@ -61,9 +61,9 @@ async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
 #[command]
 async fn all(ctx: &Context, msg: &Message) -> CommandResult {
     let super_user_id = env::var("SUPER_USER_ID")
-        .expect("Super Karls user ID needs to be present")
+        .expect("Super Karl's user ID needs to be present")
         .parse::<u64>()
         .expect("Failed to convert environment variable SUPER_USER_ID to u64");
-    info!("Yall called! Changing nick of {}", super_user_id);
+    info!("Y'all called! Changing nick of {}", super_user_id);
     set_name(ctx, msg, Some(String::from("Super")), super_user_id).await
 }
