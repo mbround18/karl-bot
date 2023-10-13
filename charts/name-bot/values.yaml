@@ -10,7 +10,7 @@ secret:
   super_user_id: ""
 
 image:
-  name: name-bot
+  name: mbround18/name-bot
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"

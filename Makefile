@@ -36,7 +36,10 @@ wsl.clippy: wsl.sync
 	cd $(BUILD_DIR) && cargo clippy
 
 docker.build:
-	docker build -f Dockerfile -t mbrond18/name-bot:latest .
+	docker compose build
+
+docker.push:
+	docker compose push
 
 lint: wsl.clippy
 	cargo fmt --all

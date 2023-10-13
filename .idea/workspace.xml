@@ -8,7 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43863a29-3aeb-450e-a1cc-daa58014447d" name="Changes" comment="refactored">
-      <change beforePath="$PROJECT_DIR$/charts/name-bot/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/name-bot/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/name-bot/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/name-bot/values.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +114,7 @@
       <workItem from="1697231325837" duration="1124000" />
       <workItem from="1697232476326" duration="265000" />
       <workItem from="1697232797947" duration="1943000" />
-      <workItem from="1697234783451" duration="1494000" />
+      <workItem from="1697234783451" duration="1961000" />
     </task>
     <task id="LOCAL-00001" summary="refactored">
       <option name="closed" value="true" />

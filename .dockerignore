@@ -3,3 +3,10 @@ target/
 Makefile
 README.md
 renovate.json
+*.tf
+charts/
+modules/
+.terraform/
+.terraform.lock.hcl
+
+
