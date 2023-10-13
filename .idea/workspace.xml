@@ -86,6 +86,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\develop\rust\karl-bot\charts\name-bot" />
+      <recent name="C:\Users\micha\develop\rust\karl-bot\modules\name-bot" />
       <recent name="C:\Users\micha\develop\rust\karl-bot" />
       <recent name="C:\Users\micha\develop\rust\karl-bot\deploy" />
     </key>
@@ -108,7 +110,7 @@
       <workItem from="1697231325837" duration="1124000" />
       <workItem from="1697232476326" duration="265000" />
       <workItem from="1697232797947" duration="1943000" />
-      <workItem from="1697234783451" duration="849000" />
+      <workItem from="1697234783451" duration="1150000" />
     </task>
     <task id="LOCAL-00001" summary="refactored">
       <option name="closed" value="true" />

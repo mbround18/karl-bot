@@ -8,7 +8,7 @@ resource "kubernetes_namespace" "i" {
 resource "helm_release" "i" {
   depends_on = [kubernetes_namespace.i]
 
-  chart = "../../charts/name-bot"
+  chart = path("${path.root}/charts/name-bot")
   name  = "name-bot"
   namespace = "name-bot"
 
