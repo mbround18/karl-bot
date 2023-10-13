@@ -1,6 +1,6 @@
 
 resource "helm_release" "i" {
-  chart = "../"
+  chart = "../../deploy"
   name  = "name-bot"
 
   set_sensitive {

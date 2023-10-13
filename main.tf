@@ -36,7 +36,7 @@ variable "config" {
 
 
 module "name-bot" {
-  source = "./deploy/module"
+  source = "./modules/name-bot"
   token = var.config.token
   user_id = var.config.user_id
   super_user_id = var.config.super_user_id
