@@ -1,7 +1,16 @@
+resource "kubernetes_namespace" "i" {
+    metadata {
+        name = "name-bot"
+    }
+}
+
 
 resource "helm_release" "i" {
-  chart = "../../deploy"
+  depends_on = [kubernetes_namespace.i]
+
+  chart = "../../deploy/Chart.yaml"
   name  = "name-bot"
+  namespace = "name-bot"
 
   set_sensitive {
     name  = "secret.token"
