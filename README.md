@@ -1,6 +1,6 @@
-# karl-bot
+# name-bot
 
-A simple bot to troll my friend Karl
+A simple bot to troll my friend Avery
 
 ## Installation
 
@@ -8,5 +8,5 @@ A simple bot to troll my friend Karl
 docker run \
   --env DISCORD_TOKEN="<bot token>" \
   --env USER_ID="<their u64 snowflake ID, right click their name in developer mode>" \
-  mbround18/karl-bot
+  mbround18/name-bot
 ```

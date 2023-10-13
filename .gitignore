@@ -1,1 +1,6 @@
 /target
+.env
+.terraform
+*tfstate*
+*tfvars*
+
