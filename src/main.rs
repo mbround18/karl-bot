@@ -22,8 +22,8 @@ impl EventHandler for Handler {}
 
 #[tokio::main]
 async fn main() {
-    dotenv::dotenv().ok();
     setup_logger();
+    info!("Starting up!");
     let framework = StandardFramework::new()
         .configure(|c| {
             c.case_insensitivity(true);
@@ -32,6 +32,7 @@ async fn main() {
         })
         .group(&GENERAL_GROUP);
 
+    info!("Creating client");
     let token = get_var("DISCORD_TOKEN");
     let intents = GatewayIntents::non_privileged() | GatewayIntents::MESSAGE_CONTENT;
 

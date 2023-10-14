@@ -5,13 +5,14 @@
 replicaCount: 1
 
 secret:
+  client_id: ""
   token: ""
   user_id: ""
   super_user_id: ""
 
 image:
   name: mbround18/name-bot
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 

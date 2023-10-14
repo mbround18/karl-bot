@@ -20,11 +20,11 @@ FROM chef AS builder
 
 # Copy recipe from planner
 COPY --from=planner /app/recipe.json recipe.json
-COPY . .
 
 # Build dependencies - this is the caching Docker layer!
 RUN cargo chef cook --release --recipe-path recipe.json
 
+COPY . .
 RUN rustup target add x86_64-unknown-linux-gnu \
     && cargo build --release  \
     && rm -rf src/ target/release/deps/
@@ -32,9 +32,9 @@ RUN rustup target add x86_64-unknown-linux-gnu \
 # Use a slim container for the final image
 FROM debian:${DEBIAN_VERSION}-slim
 
-
 WORKDIR /bot
 
 COPY --from=builder /app/target/release/name-bot /bot/name-bot
+COPY ./scripts/entrypoint.sh /bot/entrypoint.sh
 
-ENTRYPOINT [ "/bot/name-bot" ]
+ENTRYPOINT ["/bot/entrypoint.sh"]
