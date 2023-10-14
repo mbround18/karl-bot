@@ -36,5 +36,6 @@ WORKDIR /bot
 
 COPY --from=builder /app/target/release/name-bot /bot/name-bot
 COPY ./scripts/entrypoint.sh /bot/entrypoint.sh
+RUN chmod +x /bot/entrypoint.sh
 
 ENTRYPOINT ["/bot/entrypoint.sh"]
