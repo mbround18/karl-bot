@@ -14,7 +14,7 @@ resource "helm_release" "i" {
 
   set_sensitive {
     name  = "secret.client_id"
-    value = var.
+    value = var.client_id
   }
 
   set_sensitive {
