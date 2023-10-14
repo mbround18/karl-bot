@@ -14,7 +14,13 @@ wsl.build: wsl.sync
 		--exclude .fingerprint \
 		--exclude build \
 		--exclude incremental \
-		--exclude deps
+		--exclude deps \
+		--exclude .terraform \
+		--exclude .terraform.lock.hcl \
+		--exclude .terraform.tfstate \
+		--exclude .terraform.tfstate.backup \
+		--exclude modules \
+		--exclude charts
 
 wsl.run: wsl.sync
 	cd $(BUILD_DIR) && cargo run
@@ -24,7 +30,19 @@ wsl.test: wsl.sync
 
 wsl.sync:
 	mkdir -p $(BUILD_DIR)
-	rsync -av $(SOURCE_DIR)/ $(BUILD_DIR)/ --exclude .git --exclude target --exclude tmp
+	rsync -av $(SOURCE_DIR)/ $(BUILD_DIR)/ \
+		--exclude .git \
+		--exclude target \
+		--exclude .fingerprint \
+		--exclude build \
+		--exclude incremental \
+		--exclude deps \
+		--exclude .terraform \
+		--exclude .terraform.lock.hcl \
+		--exclude .terraform.tfstate \
+		--exclude .terraform.tfstate.backup \
+		--exclude modules \
+		--exclude charts
 
 wsl.clean:
 	rm -rf $(BUILD_DIR)/target

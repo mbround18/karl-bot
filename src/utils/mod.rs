@@ -22,3 +22,11 @@ pub fn get_name() -> String {
     )
     .replace('-', " ")
 }
+
+pub fn get_var(name: &str) -> String {
+    env::var(name)
+        .expect(&format!("{} must be present!", name))
+        .trim()
+        .to_string()
+        .replace("\"", "")
+}

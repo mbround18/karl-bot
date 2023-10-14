@@ -1,3 +1,6 @@
+variable "client_id" {
+  type = string
+}
 
 variable "token" {
   type = string
@@ -10,3 +13,4 @@ variable "user_id" {
 variable "super_user_id" {
   type = string
 }
+

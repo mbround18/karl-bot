@@ -5,4 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-
+    environment:
+      - DISCORD_TOKEN=token
+      - USER_ID=user_id
+      - SUPER_USER_ID=super_user_id

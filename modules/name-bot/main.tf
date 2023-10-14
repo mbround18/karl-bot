@@ -13,6 +13,11 @@ resource "helm_release" "i" {
   namespace = "name-bot"
 
   set_sensitive {
+    name  = "secret.client_id"
+    value = var.
+  }
+
+  set_sensitive {
     name  = "secret.token"
     value = var.token
   }

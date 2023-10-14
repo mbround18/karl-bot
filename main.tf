@@ -28,6 +28,7 @@ provider "kubernetes" {
 
 variable "config" {
   type = object({
+    client_id = string
     token = string
     user_id = string
     super_user_id = string
@@ -37,6 +38,7 @@ variable "config" {
 
 module "name-bot" {
   source = "./modules/name-bot"
+  client_id = var.config.client_id
   token = var.config.token
   user_id = var.config.user_id
   super_user_id = var.config.super_user_id

@@ -2,10 +2,9 @@ mod commands;
 mod utils;
 
 use log::{error, info};
-use std::env;
 
 use crate::commands::set_name::set_name;
-use crate::utils::setup_logger;
+use crate::utils::{get_var, setup_logger};
 use serenity::async_trait;
 use serenity::framework::standard::macros::{command, group};
 use serenity::framework::standard::{CommandResult, StandardFramework};
@@ -23,6 +22,7 @@ impl EventHandler for Handler {}
 
 #[tokio::main]
 async fn main() {
+    dotenv::dotenv().ok();
     setup_logger();
     let framework = StandardFramework::new()
         .configure(|c| {
@@ -32,7 +32,7 @@ async fn main() {
         })
         .group(&GENERAL_GROUP);
 
-    let token = env::var("DISCORD_TOKEN").expect("Discord Token expected to utilize the bot!");
+    let token = get_var("DISCORD_TOKEN");
     let intents = GatewayIntents::non_privileged() | GatewayIntents::MESSAGE_CONTENT;
 
     let mut client = Client::builder(token, intents.union(GatewayIntents::GUILD_MEMBERS))
@@ -42,7 +42,7 @@ async fn main() {
         .expect("Error creating client");
 
     // start listening for events by starting a single shard
-    info!("Invite URL: https://discord.com/oauth2/authorize?client_id={}&scope=bot&permissions=309439007808", env::var("DISCORD_CLIENT_ID").expect("App ID must be presented!"));
+    info!("Invite URL: https://discord.com/oauth2/authorize?client_id={}&scope=bot&permissions=309439007808", get_var("DISCORD_CLIENT_ID"));
     if let Err(why) = client.start().await {
         error!("An error occurred while running the client: {:?}", why);
     }
@@ -50,8 +50,7 @@ async fn main() {
 
 #[command]
 async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
-    let user_id = env::var("USER_ID")
-        .expect("Karl's user ID needs to be present")
+    let user_id = get_var("USER_ID")
         .parse::<u64>()
         .expect("Failed to convert environment variable USER_ID to u64");
     info!("Yeet called! Changing nick of {}", user_id);
@@ -60,8 +59,7 @@ async fn eet(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn all(ctx: &Context, msg: &Message) -> CommandResult {
-    let super_user_id = env::var("SUPER_USER_ID")
-        .expect("Super Karl's user ID needs to be present")
+    let super_user_id = get_var("SUPER_USER_ID")
         .parse::<u64>()
         .expect("Failed to convert environment variable SUPER_USER_ID to u64");
     info!("Y'all called! Changing nick of {}", super_user_id);
