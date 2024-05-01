@@ -9,7 +9,7 @@ edition = "2021"
 serenity = {version ="0", features =["http"]}
 tokio = { version = "1", features = ["rt-multi-thread"] }
 env_logger = "0"
-log = "0"
+log = "0.4.21"
 names = { version = "0", default-features = false }
 titlecase = "3"
 dotenv = "0.15.0"
